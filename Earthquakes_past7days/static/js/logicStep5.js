@@ -85,54 +85,53 @@ d3.json(earthquake).then(function(data) {
         return 1;
         }
         return magnitude * 4;
+        }
     }
-}
 
-// Creating a GeoJSON layer with the retrieved data.
-L.geoJson(data, {
-    // We turn each feature into a circleMarker on the map.
-    pointToLayer: function(feature, latlng) {
-                console.log(data);
-                return L.circleMarker(latlng);
-            },
-          // We set the style for each circleMarker using our styleInfo function.
+    // Creating a GeoJSON layer with the retrieved data.
+    L.geoJson(data, {
+        // We turn each feature into a circleMarker on the map.
+        pointToLayer: function(feature, latlng) {
+            console.log(data);
+            return L.circleMarker(latlng);
+        },
+        // We set the style for each circleMarker using our styleInfo function.
         style: styleInfo,
         // We create a popup for each circleMarker to display the magnitude and
         //  location of the earthquake after the marker has been created and styled.
-         onEachFeature: function(feature, layer) {
-          layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
+        onEachFeature: function(feature, layer) {
+            layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
         }
-        }).addTo(earthquakes);
+    }).addTo(earthquakes);
+    // Then add earthquake layer to map.
+    earthquakes.addTo(map);
 
-        // Then we add the earthquake layer to our map.
-        earthquakes.addTo(map);
-
-        // Create a legend control object.
-        let legend = L.control({
-        position: "bottomright"
-        });
+    // Create a legend control object 
+    let legend = L.control({position: 'bottomright'});
+  
+    legend.onAdd = function () {
         
-        // Then add all the details for the legend.
-        legend.onAdd = function() {
-            let div = L.DomUtil.create("div", "info legend");
-                const magnitudes = [0, 1, 2, 3, 4, 5];
-                const colors = [
-                "#98ee00",
-                "#d4ee00",
-                "#eecc00",
-                "#ee9c00",
-                "#ea822c",
-                "#ea2c2c"
-                ];
+        let div = L.DomUtil.create('div', 'info legend');
+        const magnitudes = [0, 1, 2, 3, 4, 5];
+        const colors = [
+            "#98ee00",
+            "#d4ee00",
+            "#eecc00",
+            "#ee9c00",
+            "#ea822c",
+            "#ea2c2c"
+        ];
+  
         // Looping through our intervals to generate a label with a colored square for each interval.
-            for (var i = 0; i < magnitudes.length; i++) {
-                console.log(colors[i]);
-                div.innerHTML +=
-                "<i style='background: " + colors[i] + "'></i> " +
-                magnitudes[i] + (magnitudes[i + 1] ? "&ndash;" + magnitudes[i + 1] + "<br>" : "+");
-            }
-            return div;
+        for (var i = 0; i < magnitudes.length; i++) {
+            console.log(colors[i]);
+            div.innerHTML +=
+            "<i style='background: " + colors[i] + "'></i> " +
+            magnitudes[i] + (magnitudes[i + 1] ? "&ndash;" + magnitudes[i + 1] + "<br>" : "+");
+        }
+        return div;
         };
-
+        
         legend.addTo(map);
-    });
+  
+});
