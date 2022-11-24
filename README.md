@@ -3,6 +3,7 @@ Mapping Earthquakes with JavaScript and APIs
 
 ## Overview 
 ***Background***
+
 To tell a story with data through interactive maps, this module goes over using Leaflet.js Application Programming Interface (API) to create a map with GeoJSON earthquake data. By the end of the module and challenge, we are able to: 
 
 - Create a branch from the main branch on GitHub. Add, commit, push and merge data to a GitHub branch.
@@ -15,6 +16,7 @@ To tell a story with data through interactive maps, this module goes over using 
 
 
 ***Purpose***
+
 The purpose of this project is to visually show the differences between the magnitudes of earthquakes all over the world for the last seven days.
 
 ## Resources 
@@ -25,7 +27,8 @@ The purpose of this project is to visually show the differences between the magn
 ## Results
 To create a map showing the magnitudes of earthquakes in the last seven days, we used the GeoJSON earthquake data from the USGS website ([Earthquake Data](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson)) to retrieve the geographical information from earthquakes over the last seven days. In addition to adding earthquakes on our map, we added tectonic plates and major earthquake (magnitude of 4.5 or greater) layers to our geographical map. In addition to these layers, we included (3) different backgrounds as tile layers (Street, Satellite, and Dark Mode). 
 
-Click [HERE]() to see the deployed interactive website demonstrating our findings. 
+![tectonicPlates.png](Earthquake_Challenge/static/images/tectonicPlates.png)
+![darkMode.png](Earthquake_Challenge/static/images/darkMode.png)
 
 
 ## Summary 
